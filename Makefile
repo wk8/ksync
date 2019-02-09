@@ -1,6 +1,6 @@
 
-BINARY_VERSION  ?= corrupted-version
-GIT_COMMIT      ?= $(shell git rev-parse --short HEAD)
+BINARY_VERSION  ?= 0.3.4
+GIT_COMMIT      ?= fe9ac9d
 
 DATE            := $(shell (which gdate > /dev/null && echo "gdate") || echo "date")
 BUILD_DATE      := $(shell date --utc --rfc-3339 ns 2> /dev/null | sed -e 's/ /T/')
@@ -11,6 +11,7 @@ MUTABLE_VERSION := canary
 DOCKER_VERSION  := git-${GIT_COMMIT}
 export IMAGE    := ${IMAGE_BASE}:${DOCKER_VERSION}
 MUTABLE_IMAGE   := ${IMAGE_BASE}:${MUTABLE_VERSION}
+CIRCLE_TAG      := 0.3.4
 ifdef CIRCLE_TAG
 IMAGE_TAG       := ${IMAGE_BASE}:${CIRCLE_TAG}
 endif
